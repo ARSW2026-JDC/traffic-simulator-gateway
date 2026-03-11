@@ -8,7 +8,7 @@ async function bootstrap() {
 
   // Configurar CORS
   app.enableCors({
-    //origin: [], // URLs del frontend
+    origin: [envs.simulatorUrl], // URLs del frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
