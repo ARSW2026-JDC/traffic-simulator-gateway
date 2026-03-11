@@ -13,8 +13,9 @@ interface EnvVars {
     MEASUREMENT_ID: string;
     THROTTLE_TTL: number;
     THROTTLE_LIMIT: number;
-
-
+    FIREBASE_CLIENT_EMAIL: string;
+    FIREBASE_PRIVATE_KEY: string;
+    SIMULATOR_URL: string;
 }
 const envsSchema = joi
     .object({
@@ -28,6 +29,9 @@ const envsSchema = joi
         MEASUREMENT_ID: joi.string().required(),
         THROTTLE_TTL: joi.number().default(60 * 1000), // 1 minute
         THROTTLE_LIMIT: joi.number().default(100), // 100 requests per TTL
+        FIREBASE_CLIENT_EMAIL: joi.string().required(),
+        FIREBASE_PRIVATE_KEY: joi.string().required(),
+        SIMULATOR_URL: joi.string().uri().required(),
     })
     .unknown(true);
 
@@ -48,4 +52,7 @@ export const envs = {
     measurementId: envVars.MEASUREMENT_ID,
     throttleTtl: envVars.THROTTLE_TTL,
     throttleLimit: envVars.THROTTLE_LIMIT,
+    firebaseClientEmail: envVars.FIREBASE_CLIENT_EMAIL,
+    firebasePrivateKey: envVars.FIREBASE_PRIVATE_KEY,
+    simulatorUrl: envVars.SIMULATOR_URL,
 };
